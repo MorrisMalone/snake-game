@@ -52,7 +52,6 @@ function findEmptySquares() {
     const snakePositions = snake.tail;
     const squares = Array.from(gameBoard.children);
     let emptySquares = squares.filter(square => !snakePositions.includes(Number(square.id))).map(square => square.id);
-    console.log(snakePositions, squares, emptySquares);
     return emptySquares;
 }
 
