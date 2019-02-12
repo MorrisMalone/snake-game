@@ -22,7 +22,7 @@ function createGameBoard() {
     const gameBoard = document.createElement('div');
     gameBoard.setAttribute('id', 'game-board');
 
-    for (let i = 1; i <= size * size; i++) {
+    for (let i = 1; i <= size * size; i++) {          // create all squares of the gameboard
         const square = document.createElement('div');
         square.setAttribute('id', `${i}`);
         square.classList.add('square-size');
@@ -49,11 +49,12 @@ drawSnake(snake);
 
 // find an empty spot
 function findEmptySquares() {
+    const snakePositions = snake.tail;
     const squares = Array.from(gameBoard.children);
-    let emptySquares = squares.filter(square => !square.classList.contains('snake-piece')).map(square => square.id);
+    let emptySquares = squares.filter(square => !snakePositions.includes(Number(square.id))).map(square => square.id);
+    console.log(snakePositions, squares, emptySquares);
     return emptySquares;
 }
-
 
 // create the food
 function createFood() {
